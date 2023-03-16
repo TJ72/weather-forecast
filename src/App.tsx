@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useAppDispatch } from './hooks/hook';
+import { useAppDispatch } from './hooks/hooks';
 import { fetchWeather } from './store/weatherSlice';
 
 function App() {
