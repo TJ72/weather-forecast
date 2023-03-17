@@ -1,11 +1,11 @@
 export interface WeatherData {
-  type?: 'data';
+  type: 'data';
   city: City;
   weatherList: WeatherDetails[];
 }
 
 export interface APIError {
-  type?: 'error';
+  type: 'error';
   message: string;
 }
 

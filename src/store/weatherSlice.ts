@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from './store';
 import api from '../api/api';
-import { WeatherData } from '../types/weather';
+import { City, WeatherData, WeatherDetails } from '../types/weather';
 
 export interface WeatherState {
-  weatherData: WeatherData;
+  weatherData: {
+    city: City;
+    weatherList: WeatherDetails[];
+  };
   loading: boolean;
   error: string;
 }
