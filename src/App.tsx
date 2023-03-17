@@ -1,8 +1,28 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
 import { useAppDispatch } from './hooks/hooks';
 import { fetchWeather } from './store/weatherSlice';
+
+const AppWrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #282c34;
+`;
+
+const AppContainer = styled.div`
+  height: 80%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+`;
 
 function App() {
   const dispatch = useAppDispatch();
@@ -11,22 +31,9 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <AppContainer>Hello World</AppContainer>
+    </AppWrapper>
   );
 }
 
