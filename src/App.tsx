@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useAppDispatch } from './hooks/hooks';
+import { fetchWeather } from './store/weatherSlice';
 
 function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchWeather('Taipei'));
+  }, [dispatch]);
+
   return (
     <div className="App">
       <header className="App-header">
