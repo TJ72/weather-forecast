@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 type Props = {
   children: ReactNode;
+  unit?: 'metric' | 'imperial';
+  setUnit?: (unit: 'metric' | 'imperial') => void;
+  denote?: 'metric' | 'imperial';
 };
 
 const StyledLabel = styled.label`
@@ -13,10 +16,19 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `;
 
-function Checkbox({ children }: Props) {
+function Checkbox({ children, unit, setUnit, denote }: Props) {
+  function handleChange() {
+    if (unit && setUnit) {
+      setUnit(denote as 'metric' | 'imperial');
+    }
+  }
   return (
     <StyledLabel>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={unit === denote}
+        onChange={handleChange}
+      />
       <span>{children}</span>
     </StyledLabel>
   );

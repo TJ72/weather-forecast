@@ -46,10 +46,10 @@ const weatherSlice = createSlice({
 export const { setWeatherData, setLoading, setErrorMessage } =
   weatherSlice.actions;
 export const fetchWeather =
-  (city: string): AppThunk =>
+  (city: string, unit: 'metric' | 'imperial'): AppThunk =>
   async (dispatch) => {
     dispatch(setLoading(true));
-    const data = await getForecastData(city);
+    const data = await getForecastData(city, unit);
     if (data.type === 'error') {
       dispatch(setErrorMessage(data.message));
     } else {

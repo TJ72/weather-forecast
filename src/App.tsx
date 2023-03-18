@@ -30,7 +30,7 @@ const AppContainer = styled.div`
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchWeather('Taipei'));
+    dispatch(fetchWeather('Taipei', 'metric'));
   }, [dispatch]);
 
   return (
