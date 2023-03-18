@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import Checkbox from './Checkbox';
 
 const BarWrapper = styled.div`
   width: 80%;
@@ -17,6 +18,14 @@ const TextInput = styled.input`
   border: 1px solid #ccc;
   padding: 0 10px;
   font-size: 16px;
+`;
+
+const UnitsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
 `;
 
 function SearchBar() {
@@ -41,6 +50,10 @@ function SearchBar() {
         ref={inputRef}
         onKeyDown={handleKeyDown}
       />
+      <UnitsWrapper>
+        <Checkbox>°C</Checkbox>
+        <Checkbox>°F</Checkbox>
+      </UnitsWrapper>
       <Button handleClick={handleFetchWeather}>Submit</Button>
     </BarWrapper>
   );
