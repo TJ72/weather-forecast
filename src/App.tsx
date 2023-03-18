@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from './hooks/hooks';
 import { fetchWeather } from './store/weatherSlice';
+import SearchBar from './components/SearchBar';
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -32,7 +33,9 @@ function App() {
 
   return (
     <AppWrapper>
-      <AppContainer>Hello World</AppContainer>
+      <AppContainer>
+        <SearchBar />
+      </AppContainer>
     </AppWrapper>
   );
 }
