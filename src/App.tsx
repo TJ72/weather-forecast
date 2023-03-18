@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useAppDispatch } from './hooks/hooks';
 import { fetchWeather } from './store/weatherSlice';
 import SearchBar from './components/SearchBar';
+import TemperatureChart from './components/TemperatureChart';
+import HumidityChart from './components/HumidityChart';
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -35,6 +37,9 @@ function App() {
     <AppWrapper>
       <AppContainer>
         <SearchBar />
+        <TemperatureChart type="maxTemp" />
+        <TemperatureChart type="minTemp" />
+        <HumidityChart />
       </AppContainer>
     </AppWrapper>
   );

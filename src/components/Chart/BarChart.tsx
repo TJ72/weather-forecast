@@ -10,9 +10,9 @@ type BarProps = {
 };
 
 const growAnimation = keyframes`
-    0% {
-        height: 0;
-    }
+  0% {
+    height: 0;
+  }
 `;
 
 const Bar = styled.div<BarProps>`
