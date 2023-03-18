@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from './store';
-import api from '../api/api';
+import { getForecastData } from '../api/weatherApi';
 import { City, WeatherData, WeatherDetails } from '../types/weather';
 
 export interface WeatherState {
@@ -49,7 +49,7 @@ export const fetchWeather =
   (city: string): AppThunk =>
   async (dispatch) => {
     dispatch(setLoading(true));
-    const data = await api.getWeather(city);
+    const data = await getForecastData(city);
     if (data.type === 'error') {
       dispatch(setErrorMessage(data.message));
     } else {
