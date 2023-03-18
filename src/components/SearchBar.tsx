@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { useAppDispatch } from '../hooks/hooks';
+import { fetchWeather } from '../store/weatherSlice';
 import Button from './Button';
 import Checkbox from './Checkbox';
 
@@ -30,11 +32,13 @@ const UnitsWrapper = styled.div`
 
 function SearchBar() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
 
   function handleFetchWeather() {
     // TODO: handle error message
-    if (!inputRef.current) return;
-    console.log(inputRef.current.value);
+    const cityQuery = inputRef.current?.value.trim().toLowerCase();
+    if (!cityQuery) return;
+    dispatch(fetchWeather(cityQuery));
   }
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
