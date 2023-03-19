@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { WeatherData, RawWeatherData, WeatherDetails } from '../types/weather';
+import { getDateFormat } from './string';
 
 export default function tidyRawWeatherData(data: RawWeatherData): WeatherData {
   let currDate: string = data.list[0].dt_txt.split(' ')[0];
@@ -12,8 +13,9 @@ export default function tidyRawWeatherData(data: RawWeatherData): WeatherData {
       const date = dt_txt.split(' ')[0];
 
       if (date !== currDate) {
+        const dateFormat = getDateFormat(currDate);
         result.push({
-          date: currDate as string,
+          date: dateFormat as string,
           humidity: _.mean(dailyHumidity),
           maxTemp: _.max(dailyMaxTemp) as number,
           minTemp: _.min(dailyMinTemp) as number,
