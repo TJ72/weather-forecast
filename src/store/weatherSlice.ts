@@ -9,7 +9,7 @@ export interface WeatherState {
     weatherList: WeatherDetails[];
   };
   loading: boolean;
-  error: string;
+  errorMessage: string;
 }
 
 const initialState: WeatherState = {
@@ -21,7 +21,7 @@ const initialState: WeatherState = {
     weatherList: [],
   },
   loading: false,
-  error: '',
+  errorMessage: '',
 };
 
 const weatherSlice = createSlice({
@@ -38,7 +38,7 @@ const weatherSlice = createSlice({
       state.loading = action.payload;
     },
     setErrorMessage: (state: WeatherState, action: PayloadAction<string>) => {
-      state.error = action.payload;
+      state.errorMessage = action.payload;
     },
   },
 });
@@ -46,10 +46,10 @@ const weatherSlice = createSlice({
 export const { setWeatherData, setLoading, setErrorMessage } =
   weatherSlice.actions;
 export const fetchWeather =
-  (city: string): AppThunk =>
+  (city: string, unit: 'metric' | 'imperial'): AppThunk =>
   async (dispatch) => {
     dispatch(setLoading(true));
-    const data = await getForecastData(city);
+    const data = await getForecastData(city, unit);
     if (data.type === 'error') {
       dispatch(setErrorMessage(data.message));
     } else {

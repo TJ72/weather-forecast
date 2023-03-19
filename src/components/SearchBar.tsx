@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import { useAppDispatch } from '../hooks/hooks';
+import { setErrorMessage, fetchWeather } from '../store/weatherSlice';
 import Button from './Button';
 import Checkbox from './Checkbox';
 
@@ -29,12 +31,18 @@ const UnitsWrapper = styled.div`
 `;
 
 function SearchBar() {
+  const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
   const inputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
 
   function handleFetchWeather() {
-    // TODO: handle error message
-    if (!inputRef.current) return;
-    console.log(inputRef.current.value);
+    const cityQuery = inputRef.current?.value.trim().toLowerCase();
+    if (!cityQuery) {
+      dispatch(setErrorMessage('Please enter a city name'));
+      return;
+    }
+    dispatch(setErrorMessage(''));
+    dispatch(fetchWeather(cityQuery, unit));
   }
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
@@ -51,8 +59,12 @@ function SearchBar() {
         onKeyDown={handleKeyDown}
       />
       <UnitsWrapper>
-        <Checkbox>°C</Checkbox>
-        <Checkbox>°F</Checkbox>
+        <Checkbox unit={unit} setUnit={setUnit} denote="metric">
+          °C
+        </Checkbox>
+        <Checkbox unit={unit} setUnit={setUnit} denote="imperial">
+          °F
+        </Checkbox>
       </UnitsWrapper>
       <Button handleClick={handleFetchWeather}>Submit</Button>
     </BarWrapper>
