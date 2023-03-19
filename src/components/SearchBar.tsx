@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from '../hooks/hooks';
 import { setErrorMessage, fetchWeather } from '../store/weatherSlice';
-import Button from './Button';
+import SearchButton from './Button/SearchButton';
 import Checkbox from './Checkbox';
 
 type Props = {
@@ -70,7 +70,7 @@ function SearchBar({ unit, setUnit }: Props) {
           °F
         </Checkbox>
       </UnitsWrapper>
-      <Button handleClick={handleFetchWeather}>Submit</Button>
+      <SearchButton handleClick={handleFetchWeather} />
     </BarWrapper>
   );
 }
