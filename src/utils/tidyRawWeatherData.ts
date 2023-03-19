@@ -8,7 +8,7 @@ export default function tidyRawWeatherData(data: RawWeatherData): WeatherData {
   let dailyMinTemp: number[] = [];
   let dailyHumidity: number[] = [];
   const weatherList = data.list.reduce(
-    (result: WeatherDetails[], rawWeatherDetails, idx) => {
+    (result: WeatherDetails[], rawWeatherDetails) => {
       const { dt_txt, main } = rawWeatherDetails;
       const date = dt_txt.split(' ')[0];
 
@@ -16,7 +16,7 @@ export default function tidyRawWeatherData(data: RawWeatherData): WeatherData {
         const dateFormat = getDateFormat(currDate);
         result.push({
           date: dateFormat as string,
-          humidity: _.mean(dailyHumidity),
+          humidity: _.round(_.mean(dailyHumidity), 2),
           maxTemp: _.max(dailyMaxTemp) as number,
           minTemp: _.min(dailyMinTemp) as number,
         });

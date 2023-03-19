@@ -21,12 +21,12 @@ function HumidityChart() {
   const { weatherData } = useAppSelector((state) => state.weather);
 
   return (
-    <ChartFrame title="Humidity (in average)">
+    <ChartFrame title="Humidity (% in average)">
       <ChartsContainer>
         {weatherData.weatherList.map((weatherDetails, idx) => {
           return (
             <ChartWrapper key={`${weatherDetails}-${idx}`}>
-              <span>{weatherDetails.humidity}%</span>
+              <span>{weatherDetails.humidity.toFixed(2)}%</span>
               <PieChart percent={weatherDetails.humidity} />
               <span>{weatherDetails.date}</span>
             </ChartWrapper>

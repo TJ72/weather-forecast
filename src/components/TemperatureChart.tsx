@@ -5,6 +5,7 @@ import ChartFrame from './Chart/ChartFrame';
 import BarChart from './Chart/BarChart';
 
 type Props = {
+  unit: 'metric' | 'imperial';
   type: string;
 };
 
@@ -21,18 +22,28 @@ const ChartWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-function TemperatureChart({ type }: Props) {
+function TemperatureChart({ unit, type }: Props) {
   const { weatherData } = useAppSelector((state) => state.weather);
   const isMaxTemp = type === 'maxTemp';
 
+  function formatFrameTitle() {
+    if (unit === 'metric') {
+      return isMaxTemp ? 'Max Temperature (°C)' : 'Min Temperature (°C)';
+    } else {
+      return isMaxTemp ? 'Max Temperature (°F)' : 'Min Temperature (°F)';
+    }
+  }
+
   return (
-    <ChartFrame title={isMaxTemp ? 'Max Temperature' : 'Min Temperature'}>
+    <ChartFrame title={formatFrameTitle()}>
       <ChartsContainer>
         {weatherData.weatherList.map((weatherDetails, idx) => {
           return (
             <ChartWrapper key={`${weatherDetails}-${idx}`}>
               <span>
-                {isMaxTemp ? weatherDetails.maxTemp : weatherDetails.minTemp}
+                {isMaxTemp
+                  ? weatherDetails.maxTemp.toFixed(2)
+                  : weatherDetails.minTemp.toFixed(2)}
               </span>
               <BarChart
                 value={

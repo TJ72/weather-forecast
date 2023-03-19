@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { fetchWeather } from './store/weatherSlice';
@@ -30,6 +30,8 @@ const AppContainer = styled.div`
 function App() {
   const { errorMessage } = useAppSelector((state) => state.weather);
   const dispatch = useAppDispatch();
+  const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
+
   useEffect(() => {
     dispatch(fetchWeather('Taipei', 'metric'));
   }, [dispatch]);
@@ -37,10 +39,10 @@ function App() {
   return (
     <AppWrapper>
       <AppContainer>
-        <SearchBar />
+        <SearchBar unit={unit} setUnit={setUnit} />
         {errorMessage && <div>{errorMessage}</div>}
-        <TemperatureChart type="maxTemp" />
-        <TemperatureChart type="minTemp" />
+        <TemperatureChart unit={unit} type="maxTemp" />
+        <TemperatureChart unit={unit} type="minTemp" />
         <HumidityChart />
       </AppContainer>
     </AppWrapper>
