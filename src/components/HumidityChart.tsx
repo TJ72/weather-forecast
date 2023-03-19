@@ -6,8 +6,10 @@ import PieChart from './Chart/PieChart';
 
 const ChartsContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 12px;
-  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const ChartWrapper = styled.div`
@@ -15,18 +17,23 @@ const ChartWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 4px;
+
+  span {
+    font-weight: 500;
+  }
 `;
 
 function HumidityChart() {
   const { weatherData } = useAppSelector((state) => state.weather);
 
   return (
-    <ChartFrame title="Humidity (in average)">
+    <ChartFrame title="Humidity (% in average)">
       <ChartsContainer>
         {weatherData.weatherList.map((weatherDetails, idx) => {
           return (
             <ChartWrapper key={`${weatherDetails}-${idx}`}>
-              <span>{weatherDetails.humidity}%</span>
+              <span>{weatherDetails.humidity.toFixed(2)}%</span>
               <PieChart percent={weatherDetails.humidity} />
               <span>{weatherDetails.date}</span>
             </ChartWrapper>

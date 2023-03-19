@@ -14,6 +14,11 @@ const StyledLabel = styled.label`
   align-items: center;
   gap: 5px;
   cursor: pointer;
+
+  & > span {
+    font-size: 1rem;
+    font-weight: 500;
+  }
 `;
 
 function Checkbox({ children, unit, setUnit, denote }: Props) {

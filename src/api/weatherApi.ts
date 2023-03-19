@@ -22,5 +22,5 @@ export const getForecastData = async (
 
   const data = (await response.json()) as RawWeatherData;
   const weatherData = tidyRawWeatherData(data);
-  return weatherData;
+  return { ...weatherData, unit };
 };

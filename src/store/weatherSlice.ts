@@ -6,6 +6,7 @@ import { City, WeatherData, WeatherDetails } from '../types/weather';
 export interface WeatherState {
   weatherData: {
     city: City;
+    unit?: 'metric' | 'imperial';
     weatherList: WeatherDetails[];
   };
   loading: boolean;
@@ -18,6 +19,7 @@ const initialState: WeatherState = {
       name: '',
       country: '',
     },
+    unit: 'metric',
     weatherList: [],
   },
   loading: false,
