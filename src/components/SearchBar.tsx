@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from '../hooks/hooks';
-import { fetchWeather } from '../store/weatherSlice';
+import { setErrorMessage, fetchWeather } from '../store/weatherSlice';
 import Button from './Button';
 import Checkbox from './Checkbox';
 
@@ -36,9 +36,12 @@ function SearchBar() {
   const dispatch = useAppDispatch();
 
   function handleFetchWeather() {
-    // TODO: handle error message
     const cityQuery = inputRef.current?.value.trim().toLowerCase();
-    if (!cityQuery) return;
+    if (!cityQuery) {
+      dispatch(setErrorMessage('Please enter a city name'));
+      return;
+    }
+    dispatch(setErrorMessage(''));
     dispatch(fetchWeather(cityQuery, unit));
   }
 

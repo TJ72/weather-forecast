@@ -9,7 +9,7 @@ export interface WeatherState {
     weatherList: WeatherDetails[];
   };
   loading: boolean;
-  error: string;
+  errorMessage: string;
 }
 
 const initialState: WeatherState = {
@@ -21,7 +21,7 @@ const initialState: WeatherState = {
     weatherList: [],
   },
   loading: false,
-  error: '',
+  errorMessage: '',
 };
 
 const weatherSlice = createSlice({
@@ -38,7 +38,7 @@ const weatherSlice = createSlice({
       state.loading = action.payload;
     },
     setErrorMessage: (state: WeatherState, action: PayloadAction<string>) => {
-      state.error = action.payload;
+      state.errorMessage = action.payload;
     },
   },
 });
