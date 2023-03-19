@@ -6,7 +6,6 @@ import ChartFrame from './Chart/ChartFrame';
 import BarChart from './Chart/BarChart';
 
 type Props = {
-  unit: 'metric' | 'imperial';
   type: string;
 };
 
@@ -24,14 +23,14 @@ const ChartWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-function TemperatureChart({ unit, type }: Props) {
+function TemperatureChart({ type }: Props) {
   const { weatherData } = useAppSelector((state) => state.weather);
   const max = _.maxBy(weatherData.weatherList, 'maxTemp')?.maxTemp as number;
   const min = _.minBy(weatherData.weatherList, 'minTemp')?.minTemp as number;
   const isMaxTemp = type === 'maxTemp';
 
   function formatFrameTitle() {
-    if (unit === 'metric') {
+    if (weatherData.unit === 'metric') {
       return isMaxTemp ? 'Max Temperature (°C)' : 'Min Temperature (°C)';
     } else {
       return isMaxTemp ? 'Max Temperature (°F)' : 'Min Temperature (°F)';

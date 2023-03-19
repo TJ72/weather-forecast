@@ -41,8 +41,8 @@ function App() {
       <AppContainer>
         <SearchBar unit={unit} setUnit={setUnit} />
         {errorMessage && <div>{errorMessage}</div>}
-        <TemperatureChart unit={unit} type="maxTemp" />
-        <TemperatureChart unit={unit} type="minTemp" />
+        <TemperatureChart type="maxTemp" />
+        <TemperatureChart type="minTemp" />
         <HumidityChart />
       </AppContainer>
     </AppWrapper>

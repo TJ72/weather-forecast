@@ -1,6 +1,7 @@
 export interface WeatherData {
   type: 'data';
   city: City;
+  unit?: 'metric' | 'imperial';
   weatherList: WeatherDetails[];
 }
 
