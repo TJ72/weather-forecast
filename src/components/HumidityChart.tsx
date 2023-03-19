@@ -28,7 +28,7 @@ function HumidityChart() {
   const { weatherData } = useAppSelector((state) => state.weather);
 
   return (
-    <ChartFrame title="Humidity (% in average)">
+    <ChartFrame title="Humidity (% in Average)">
       <ChartsContainer>
         {weatherData.weatherList.map((weatherDetails, idx) => {
           return (
