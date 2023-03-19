@@ -10,7 +10,7 @@ type Props = {
 };
 
 const ChartsContainer = styled.div`
-  height: 120px;
+  height: 160px;
   display: flex;
   gap: 6px;
   justify-content: space-between;
