@@ -50,6 +50,12 @@ const ChartsWrapper = styled.div`
   }
 `;
 
+const ErrorMessage = styled.div`
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 500;
+`;
+
 function App() {
   const { errorMessage, weatherData } = useAppSelector(
     (state) => state.weather
@@ -67,7 +73,7 @@ function App() {
     <AppWrapper>
       <AppContainer>
         <SearchBar unit={unit} setUnit={setUnit} />
-        {errorMessage && <div>{errorMessage}</div>}
+        {errorMessage && <ErrorMessage>❌ {errorMessage}</ErrorMessage>}
         <h2>{`${city} - ${country}`}</h2>
         <ChartsWrapper>
           <TemperatureChart type="maxTemp" />
