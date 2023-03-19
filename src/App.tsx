@@ -13,7 +13,7 @@ const AppWrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #282c34;
+  background-color: #d3eaf2;
 `;
 
 const AppContainer = styled.div`
