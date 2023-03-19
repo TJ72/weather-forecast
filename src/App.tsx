@@ -14,6 +14,10 @@ const AppWrapper = styled.div`
   justify-content: center;
   text-align: center;
   background-color: #d3eaf2;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 const AppContainer = styled.div`
@@ -28,8 +32,9 @@ const AppContainer = styled.div`
   border-radius: 10px;
 
   @media (max-width: 768px) {
-    height: 100vh;
+    height: auto;
     width: 100%;
+    padding: 20px;
   }
 `;
 

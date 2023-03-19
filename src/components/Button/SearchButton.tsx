@@ -22,8 +22,8 @@ const loadingAnimation = keyframes`
 
 const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
-  width: 100px;
-  height: 44px;
+  width: 80px;
+  height: 40px;
   border-radius: 5px;
   border: 0;
   padding: 0 10px;

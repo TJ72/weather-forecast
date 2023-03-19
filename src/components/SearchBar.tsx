@@ -14,17 +14,20 @@ const BarWrapper = styled.div`
   width: 80%;
   display: flex;
   justify-content: center;
+  gap: 7px;
   align-items: center;
   margin-bottom: 20px;
 `;
 
 const TextInput = styled.input`
   width: 40%;
-  height: 30px;
+  height: 36px;
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 0 10px;
-  font-size: 16px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 `;
 
 const UnitsWrapper = styled.div`
