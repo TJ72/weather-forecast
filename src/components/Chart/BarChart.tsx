@@ -16,7 +16,7 @@ const growAnimation = keyframes`
 `;
 
 const Bar = styled.div<BarProps>`
-  width: 42px;
+  width: 40px;
   height: ${({ height }) => height}px;
   background-color: #2596be;
   border-top-left-radius: 0.2rem;
