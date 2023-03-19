@@ -37,6 +37,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   & > span {
     position: relative;
     z-index: 3;
+    font-size: 1rem;
+    font-weight: 550;
   }
 
   &::before,
