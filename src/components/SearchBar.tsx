@@ -1,14 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from '../hooks/hooks';
 import { setErrorMessage, fetchWeather } from '../store/weatherSlice';
 import SearchButton from './Button/SearchButton';
 import Checkbox from './Checkbox';
-
-type Props = {
-  unit: 'metric' | 'imperial';
-  setUnit?: (unit: 'metric' | 'imperial') => void;
-};
 
 const BarWrapper = styled.div`
   width: 80%;
@@ -38,7 +33,8 @@ const UnitsWrapper = styled.div`
   margin: 0 10px;
 `;
 
-function SearchBar({ unit, setUnit }: Props) {
+function SearchBar() {
+  const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
   const inputRef = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
 
