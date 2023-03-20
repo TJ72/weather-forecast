@@ -1,5 +1,5 @@
 import { WeatherDataSchema, APIErrorSchema } from '../schemas/weatherSchemas';
-import { APIError, RawWeatherData, WeatherData } from '../types/weather';
+import { APIError, WeatherData } from '../types/weather';
 import tidyRawWeatherData from '../utils/tidyRawWeatherData';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -28,10 +28,8 @@ export const getForecastData = async (
     };
   }
 
-  const data = (await response.json()) as RawWeatherData;
   // zod will throw an error if the data is not valid
-  WeatherDataSchema.parse(data);
-
+  const data = WeatherDataSchema.parse(await response.json());
   const weatherData = tidyRawWeatherData(data);
   return { ...weatherData, unit };
 };
