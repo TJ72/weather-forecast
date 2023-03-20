@@ -10,7 +10,7 @@ type Props = {
 };
 
 const ChartsContainer = styled.div`
-  height: 120px;
+  height: 160px;
   display: flex;
   gap: 6px;
   justify-content: space-between;
@@ -24,6 +24,10 @@ const ChartWrapper = styled.div`
 
   span {
     font-weight: 500;
+  }
+
+  span:first-child {
+    margin-bottom: 3px;
   }
 `;
 
@@ -42,7 +46,7 @@ function TemperatureChart({ type }: Props) {
   }
 
   function getBarChartHeight(value: number) {
-    return ((value - min) / (max - min)) * 60 + 40;
+    return ((value - min) / (max - min)) * 90 + 40;
   }
 
   return (
