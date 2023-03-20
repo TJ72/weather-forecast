@@ -1,7 +1,4 @@
-import {
-  WeatherDataSchema,
-  APIErrorSchema,
-} from '../../schemas/weatherSchemas';
+import { WeatherDataSchema, APIErrorSchema } from '../schemas/weatherSchemas';
 import { APIError, RawWeatherData, WeatherData } from '../types/weather';
 import tidyRawWeatherData from '../utils/tidyRawWeatherData';
 
