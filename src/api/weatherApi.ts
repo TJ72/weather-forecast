@@ -1,3 +1,7 @@
+import {
+  WeatherDataSchema,
+  APIErrorSchema,
+} from '../../schemas/weatherSchemas';
 import { APIError, RawWeatherData, WeatherData } from '../types/weather';
 import tidyRawWeatherData from '../utils/tidyRawWeatherData';
 
@@ -14,6 +18,13 @@ export const getForecastData = async (
 
   if (!response.ok) {
     const error = (await response.json()) as APIError;
+    const result = APIErrorSchema.safeParse(error);
+    if (!result.success) {
+      return {
+        type: 'error',
+        message: 'Unknown error',
+      };
+    }
     return {
       type: 'error',
       message: error.message,
@@ -21,6 +32,9 @@ export const getForecastData = async (
   }
 
   const data = (await response.json()) as RawWeatherData;
+  // zod will throw an error if the data is not valid
+  WeatherDataSchema.parse(data);
+
   const weatherData = tidyRawWeatherData(data);
   return { ...weatherData, unit };
 };
