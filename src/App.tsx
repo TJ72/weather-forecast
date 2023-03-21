@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { fetchWeather } from './store/weatherSlice';
@@ -61,7 +61,6 @@ function App() {
     (state) => state.weather
   );
   const dispatch = useAppDispatch();
-  const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
   const city = weatherData?.city.name;
   const country = weatherData?.city.country;
 
@@ -72,7 +71,7 @@ function App() {
   return (
     <AppWrapper>
       <AppContainer>
-        <SearchBar unit={unit} setUnit={setUnit} />
+        <SearchBar />
         {errorMessage && <ErrorMessage>❌ {errorMessage}</ErrorMessage>}
         <h2>{`${city} - ${country}`}</h2>
         <ChartsWrapper>
