@@ -1,0 +1,12 @@
+{
+  "type": "data",
+  "city": { "name": "Taipei", "country": "TW" },
+  "weatherList": [
+    { "date": "03/21", "humidity": 74, "maxTemp": 24.19, "minTemp": 22.28 },
+    { "date": "03/22", "humidity": 69.88, "maxTemp": 30.66, "minTemp": 22.61 },
+    { "date": "03/23", "humidity": 67.25, "maxTemp": 29.53, "minTemp": 22.67 },
+    { "date": "03/24", "humidity": 82.25, "maxTemp": 25.68, "minTemp": 17.05 },
+    { "date": "03/25", "humidity": 84.25, "maxTemp": 17.69, "minTemp": 15.65 }
+  ],
+  "unit": "metric"
+}
